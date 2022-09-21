@@ -3,13 +3,15 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import {TypedUseSelectorHook, useSelector as useReduxSelector,} from "react-redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
-import { bringCharactersReducer, favoritesCharacters} from "../reducers/reducer";
+import { bringCharactersReducer, favoritesCharacters, detailCharacter, episodeReducer} from "../reducers/reducer";
 
 
 
 const rootReducer = combineReducers({
     characters: bringCharactersReducer,
-    favorites: favoritesCharacters
+    favorites: favoritesCharacters,
+    detail: detailCharacter,
+    episodesDetail: episodeReducer 
 });
 
 export type IRootState = ReturnType<typeof rootReducer>;

@@ -1,22 +1,11 @@
-import { changePage, getAllCharacters, getFilteredCharacters } from "../Helpers/dataFromApi"
+import { changePage, getCharacters } from "../Helpers/dataFromApi"
 import {ThunkAction, Action} from "@reduxjs/toolkit";
 import { IRootState } from "../store/store";
-import { Result } from "../Helpers/types/typesAPIs";
-
-export interface payloaData{
-    characters:Result[]; 
-    page:{
-            pages: number; 
-            nextPage: string; 
-            prevPage: string;
-    }
-}
-
-
+import { Result, Characters } from "../Helpers/types/typesAPIs";
 
 export const getDataFromApiThunk = ():ThunkAction<void, IRootState, unknown, Action> => {
     return async (dispatch) => {
-        const characters = await getAllCharacters()
+        const characters:Characters = await getCharacters("")
         dispatch({type:"@allCharacters/getDataFromApi",payload:{characters:characters.results, pages:{
             page: characters.info.pages, nextPage: characters.info.next, prevPage: characters.info.prev}
         }})
@@ -24,7 +13,7 @@ export const getDataFromApiThunk = ():ThunkAction<void, IRootState, unknown, Act
 }
 export const changePageThunk = (page:string):ThunkAction<void, IRootState, unknown, Action> => {
     return async (dispatch) => {
-        const characters = await changePage(page)
+        const characters:Characters = await changePage(page)
         dispatch({type:"@allCharacters/changePage",payload:{characters:characters.results, pages:{
             page: characters.info.pages, nextPage: characters.info.next, prevPage: characters.info.prev}
         }})
@@ -33,7 +22,7 @@ export const changePageThunk = (page:string):ThunkAction<void, IRootState, unkno
 
 export const filterCharactersThunk = (name:string):ThunkAction<void, IRootState, unknown, Action> => {
     return async (dispatch) => {
-        const characters = await getFilteredCharacters(name)
+        const characters:Characters = await getCharacters(name)
         dispatch({type:"@allCharacters/filtered", payload: {characters:characters.results, pages:{
             page: characters.info.pages, nextPage: characters.info.next, prevPage: characters.info.prev}
         }})

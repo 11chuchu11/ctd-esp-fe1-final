@@ -1,5 +1,8 @@
+import { Dispatch } from '@reduxjs/toolkit';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { cleanDataEpisode, getDetail } from '../../actions/actionDetail';
 import { removeFavorite, setFavorite } from '../../actions/actionsFavoritesCharacters';
 import { Result } from '../../Helpers/types/typesAPIs';
 import { useSelector } from '../../store/store';
@@ -11,7 +14,7 @@ import './tarjeta-personaje.css';
  * 
  * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
  * 
- * 
+ * @param {Result} element 
  * @returns un JSX element 
  */
 
@@ -21,12 +24,17 @@ interface props{
 
 const TarjetaPersonaje = ({element}:props) => {
     
-    const isFavorite = useSelector( state => state.favorites.find((e:Result) => e.id === element.id)) 
-    const dispatch = useDispatch()
+    const isFavorite:Result|undefined = useSelector( state => state.favorites.find((e:Result) => e.id === element.id)) 
+    const dispatch:Dispatch<any> = useDispatch()
 
     return <div className="tarjeta-personaje">
-        <img src={element.image} alt={element.name}/>
-        <div className="tarjeta-personaje-body">
+        <Link to="/detalle">
+        <img src={element.image} alt={element.name} onClick={()=>{
+            dispatch(cleanDataEpisode())
+            dispatch(getDetail(element))
+        }}/>
+        </Link>
+        <div className="tarjeta-personaje-body" >
             <span>{element.name}</span>
             <BotonFavorito esFavorito={isFavorite?.isFavorite||false} onClick={()=> isFavorite?.isFavorite ?
                     dispatch(removeFavorite(isFavorite.id)) : dispatch(setFavorite(element))} />

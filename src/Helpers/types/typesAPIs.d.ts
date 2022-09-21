@@ -1,4 +1,4 @@
-export interface RootObject {
+export interface Characters {
     info:    Info;
     results: Result[];
 }
@@ -25,6 +25,17 @@ export interface Result {
     isFavorite: boolean
 }
 
+export interface Episode {
+    air_date:   string;
+    characters: string[];
+    created:    Date;
+    episode:    string;
+    id:         number;
+    name:       string;
+    url:        string;
+}
+
+
 export interface Location {
     name: string;
     url:  string;
@@ -37,3 +48,21 @@ export type Species = "Alien" | "Human"
 
 
 export type Status = "Alive" | "Dead" |"unknown"
+
+
+export interface payloadData{
+    characters:Result[]; 
+    page:Page
+}
+
+export interface Page{
+        pages: number; 
+        nextPage: string; 
+        prevPage: string;
+}
+
+interface DetailAction extends AnyAction{
+    type: string;
+    payload?:Result
+    episodes?:Episode 
+}

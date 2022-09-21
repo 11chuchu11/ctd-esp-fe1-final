@@ -1,3 +1,4 @@
+import { Episode } from '../../Helpers/types/typesAPIs';
 import './tarjeta-episodio.css';
 
 /**
@@ -5,16 +6,20 @@ import './tarjeta-episodio.css';
  * 
  * Deberás agregar las propiedades necesarias para mostrar los datos de los episodios
  * 
- * 
+ * @param {Episode} episode
  * @returns un JSX element 
  */
-const TarjetaEpisodio = () => {
+
+interface Props{
+    episode:Episode
+}
+const TarjetaEpisodio = ({episode}:Props) => {
 
     return <div className="tarjeta-episodio">
-            <h4>Close Rick-counters of the Rick Kind</h4>
+            <h4>{episode.name}</h4>
             <div>
-                <span>S01E01</span>
-                <span>Lanzado el: April 7, 2014</span>
+                <span>{episode.episode}</span>
+                <span>Lanzado el: {episode.air_date}</span>
             </div>
     </div>
 }

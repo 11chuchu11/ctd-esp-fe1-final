@@ -1,5 +1,6 @@
+import { Dispatch } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import { getDataFromApiThunk } from '../../actions/thunkActionsBringData';
+
 
 import './boton-favorito.css';
 /**
@@ -7,7 +8,8 @@ import './boton-favorito.css';
  * 
  * Deberás tipar las propiedades si usas este componente
  * 
- * 
+ * @param {boolean} esFavorito
+ * @param {MouseEventHandler<HTMLImageElement>} onClick
  * @returns un JSX element 
  */
 
@@ -19,7 +21,7 @@ interface props {
 
 const BotonFavorito = ({esFavorito, onClick}:props) => {
 
-    const dispatch = useDispatch()
+    const dispatch:Dispatch<any> = useDispatch()
 
     const src:string = esFavorito ? "/imagenes/star-filled.png" : "/imagenes/star.png"
 
