@@ -1,4 +1,4 @@
-import React,{ HtmlHTMLAttributes, Ref } from 'react';
+import React,{ Ref } from 'react';
 import './filtros.css';
 
 type InputProps = JSX.IntrinsicElements["input"]

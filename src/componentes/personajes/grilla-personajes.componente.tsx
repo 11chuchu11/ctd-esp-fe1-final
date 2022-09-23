@@ -34,7 +34,7 @@ const GrillaPersonajes = ({characters}:props) => {
     },[])
 
     return <div className="grilla-personajes">
-        {characters.map((e:Result,i:number)=><TarjetaPersonaje element={e} key={`character-${e.name}-${i}`}/>)}
+        {characters.length !== 0 ? (characters.map((e:Result,i:number)=><TarjetaPersonaje element={e} key={`character-${e.name}-${i}`}/>)):<p className='not-found-message'>No se encontraron personajes</p>}
     </div>
 }
 

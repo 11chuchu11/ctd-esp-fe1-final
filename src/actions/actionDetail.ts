@@ -1,4 +1,3 @@
-import { AnyAction } from "@reduxjs/toolkit";
 import { DetailAction, Result } from "../Helpers/types/typesAPIs";
 
 

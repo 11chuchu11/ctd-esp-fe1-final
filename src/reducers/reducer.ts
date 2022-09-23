@@ -101,7 +101,7 @@ export const detailCharacter:Reducer<Result> = (state:Result=initialStateDetail,
  * Controls the actions used to handle how episode are shown
  * 
  * @author Franco Veron Peralta
- * @param {Episode} state 
+ * @param {Episode[]} state 
  * @param {AnyAction}action 
  * @returns 
  */

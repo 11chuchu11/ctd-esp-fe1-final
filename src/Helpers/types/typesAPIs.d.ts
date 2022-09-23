@@ -66,3 +66,9 @@ interface DetailAction extends AnyAction{
     payload?:Result
     episodes?:Episode 
 }
+
+interface FavoriteCharacterAction extends AnyAction{
+    type:string;
+    payload?:Result
+    id?:number
+}

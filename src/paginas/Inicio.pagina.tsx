@@ -19,9 +19,6 @@ import { Result } from "../Helpers/types/typesAPIs";
 const PaginaInicio = () => {
     const dispatch:Dispatch<any> = useDispatch()
 
-    /**
-     * 
-     */
     const characters:Result[] = useSelector( state => state.characters.characters)
     
     /**

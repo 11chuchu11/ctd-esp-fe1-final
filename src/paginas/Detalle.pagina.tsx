@@ -27,8 +27,6 @@ const PaginaDetalle = () => {
     const dispatch:Dispatch<any> = useDispatch()
     const character:Result = useSelector(state => state.detail)
     const episodes:Episode[] = useSelector(state => state.episodesDetail)
-    const isFavorite:Result|undefined = useSelector( state => state.favorites.find((e:Result) => e.id === character.id))
-
 
 //When the component is mounted, makes the respective api calls to get the list of episodes
     useEffect(()=>{
@@ -48,8 +46,7 @@ const PaginaDetalle = () => {
                     <p>Planeta: {character.origin.name}</p>
                     <p>Genero: {character.gender}</p>
                 </div>
-                <BotonFavorito esFavorito={isFavorite?.isFavorite||false} onClick={()=> isFavorite?.isFavorite ?
-                    dispatch(removeFavorite(isFavorite.id)) : dispatch(setFavorite(character))} />
+                <BotonFavorito character={character}/>
             </div>
         </div>
         <h4>Lista de episodios donde apareció el personaje</h4>

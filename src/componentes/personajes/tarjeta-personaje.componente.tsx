@@ -24,7 +24,7 @@ interface props{
 
 const TarjetaPersonaje = ({element}:props) => {
     
-    const isFavorite:Result|undefined = useSelector( state => state.favorites.find((e:Result) => e.id === element.id)) 
+    
     const dispatch:Dispatch<any> = useDispatch()
 
     return <div className="tarjeta-personaje">
@@ -36,8 +36,7 @@ const TarjetaPersonaje = ({element}:props) => {
         </Link>
         <div className="tarjeta-personaje-body" >
             <span>{element.name}</span>
-            <BotonFavorito esFavorito={isFavorite?.isFavorite||false} onClick={()=> isFavorite?.isFavorite ?
-                    dispatch(removeFavorite(isFavorite.id)) : dispatch(setFavorite(element))} />
+            <BotonFavorito character={element} />
         </div>
     </div>
 }

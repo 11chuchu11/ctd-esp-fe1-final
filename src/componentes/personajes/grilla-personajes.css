@@ -4,3 +4,7 @@
   grid-gap: 20px;
   justify-items: center;
 }
+
+.not-found-message{
+  justify-self: start;
+}
